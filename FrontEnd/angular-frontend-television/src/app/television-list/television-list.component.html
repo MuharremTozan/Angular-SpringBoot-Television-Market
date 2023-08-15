@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-7">
+        <h2> Television List</h2>
+        <table mat-table matSort style="text-align: center;" class="table table-sm" [dataSource]="dataSource">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let television"> {{ television.id }} </td>
+            </ng-container>
+            <ng-container matColumnDef="brandName">
+                <th mat-header-cell *matHeaderCellDef> Brand Name </th>
+                <td mat-cell *matCellDef="let television"> {{ television.brandName }} </td>
+            </ng-container>
+            <ng-container matColumnDef="modelName">
+                <th mat-header-cell *matHeaderCellDef> Model Name </th>
+                <td mat-cell *matCellDef="let television"> {{ television.modelName }} </td>
+            </ng-container>
+            <ng-container matColumnDef="screenSize">
+                <th mat-header-cell *matHeaderCellDef> Screen Size </th>
+                <td mat-cell *matCellDef="let television"> {{ television.screenSize }} </td>
+            </ng-container>
+            <ng-container matColumnDef="smartTv">
+                <th mat-header-cell *matHeaderCellDef> Smart Tv </th>
+                <td mat-cell *matCellDef="let television"> {{ television.smartTv ? '&#10004;' : '&#10006;' }} </td>
+            </ng-container>
+            <ng-container matColumnDef="productionDate">
+                <th mat-header-cell *matHeaderCellDef> Production Date </th>
+                <td mat-cell *matCellDef="let television"> {{ television.productionDate | date: 'dd/MM/yyyy'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let television"> {{ television.price
+                    }}&#36; </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let television">
+                    <div style="z-index: 0;" class="input-group input-group-sm">
+                        <button (click)="updateTelevision(television.id)" class="btn btn-warning">&#9998;</button>
+                        <button (click)="openDeleteAlert(television)" class="btn btn-danger">🗑</button>
+                        <button (click)="televisionDetails(television.id)" class="btn btn-info">🔍</button>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="addCart">
+                <th mat-header-cell *matHeaderCellDef> 🛒 </th>
+                <td mat-cell *matCellDef="let television">
+                    <div class="input-group input-group-sm">
+                        <input type="number" min="1" max="{{television.quantity}}"
+                            class="form-control form-control-sm custom-input-list" [(ngModel)]="television.count"
+                            style="width: 60px;">
+                        <button style="z-index: 0;" class=" btn btn-success" (click)="addToCart(television)">➕</button>
+
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let television"> {{television.quantity}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)"
+            aria-label="Select page of users">
+        </mat-paginator>
+
+    </div>
+
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12">
+                <h2> Shopping Cart </h2>
+                <table style="text-align: center;" class="table table-sm table-dark">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Brand Name</th>
+                            <th>Model Name</th>
+                            <th>Price</th>
+                            <th>🛒</th>
+                            <th>Qty</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of cartList">
+                            <td style="color: rgb(0, 136, 136);"><b>{{ cart.id }}</b></td>
+                            <td> {{ cart.brandName }} </td>
+                            <td> {{ cart.modelName }} </td>
+                            <td style="color: rgb(109, 182, 0);"> <b>{{ cart.price }}&#36;</b></td>
+                            <td>
+
+                                <div class="input-group input-group-sm">
+                                    <input type="number" min="1" max="{{cart.quantity}}"
+                                        class="form-control form-control-sm custom-input-cart" [(ngModel)]="cart.count"
+                                        style="width: 60px;">
+                                    <button style="z-index: 0;" class="btn btn-danger"
+                                        (click)="addToTelevisions(cart,'buttonPressed')">➖</button>
+
+                                </div>
+
+                            </td>
+                            <td>{{cart.quantity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 mt-2" style="margin-left: 407px;">
+                <h2>Total</h2>
+                <table style="text-align: center;" class="table table-sm table-dark">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{totalItems}}</td>
+                            <td style="color: rgb(109, 182, 0);"><b>{{totalPrice | number:'1.2-2'}}$</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

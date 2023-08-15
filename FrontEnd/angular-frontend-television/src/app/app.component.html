@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm navbar-dark navbar-fixed-top" style="background-color: black;">
+  <ul class="navbar-nav left-padding">
+    <li class="nav-item">
+      <a routerLink="televisions" routerLinkActive="active" class="nav-link">📺 Televisions</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="create-television" routerLinkActive="active" class="nav-link">➕ Add Television</a>
+    </li>
+    <li class="nav-item end-item">
+      <a routerLink="login-page" routerLinkActive="active" class="btn btn-success">🔒 Login </a>
+    </li>
+
+
+  </ul>
+</nav>
+<!-- <li class="nav-item end-item">
+    <div *ngIf="isLogged == false">
+      <a routerLink="login-page" routerLinkActive="active" class="btn btn-success">🔒 Login </a>
+    </div>
+    <div>
+
+    </div>
+  </li>
+  <li class="nav-item end-item">
+    <a routerLink="login-page" routerLinkActive="active" class="btn btn-success">🔒 Login </a>
+  </li>
+  <li class=""></li> -->
+
+<!-- <li class="nav-item end-item">
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          👤 Profile
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Login</a>
+          <a class="dropdown-item" href="#">Register</a>
+          <a class="dropdown-item" href="#">Öğe 3</a>
+        </div>
+      </div>
+    </li> -->
+
+
+<br><br><br>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span>Copyright © 2023 Borsa İstanbul AŞ. All Rights Reserved </span>
+  </div>
+
+</footer>

@@ -1,0 +1,24 @@
+<h3> View Television Details</h3>
+<div *ngIf="television">
+    <div>
+        <label> <b> Brand Name: </b></label> {{television.brandName}}
+    </div>
+    <div>
+        <label> <b> Model Name: </b></label> {{television.modelName}}
+    </div>
+    <div>
+        <label> <b> Screen Size: </b></label> {{television.screenSize}}"
+    </div>
+    <div>
+        <label> <b> Smart Tv: </b></label> {{ television.smartTv ? '&#10004;' : '&#10006;' }}
+    </div>
+    <div>
+        <label> <b> Production Date: </b></label> {{ television.productionDate | date: 'dd/MM/yyyy hh:mm:ss'}}
+    </div>
+    <div>
+        <label> <b> Specs: </b></label> {{television.specs}}
+    </div>
+    <div>
+        <label> <b> Price: </b></label> {{ television.price }}&#36;
+    </div>
+</div>

@@ -1,0 +1,28 @@
+.custom-input-cart {
+    background-color: rgb(15, 15, 15);
+    border-color: rgb(145, 17, 17);
+    color: white;
+  }
+
+.custom-input-list {
+    background-color: rgb(65, 65, 65);
+    border-color: rgb(28, 145, 17);
+    color: white;
+}
+
+.mat-mdc-header-row{
+  background-color: #212529;
+  height: 20px;
+}
+.mat-mdc-header-cell{
+  color: aliceblue;
+  font-weight: 1000;
+  text-align: center;
+}
+
+.mat-mdc-cell{
+  text-align: center;
+  font-weight: 500;
+}
+
+

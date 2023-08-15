@@ -1,0 +1,13 @@
+<div class="backdrop"></div>
+<div class="content">
+    <h3>ALERT!</h3>
+    <p>Are you sure you want to delete this television : {{this.data.brandName}} {{this.data.modelName}}</p>
+    <div class="row">
+        <div class="col-1 no">
+            <button class="btn btn-danger" (click)="onNoClick()">No</button>
+        </div>
+        <div class="col-1 yes">
+            <button class="btn btn-success" (click)="deleteTelevision()">Yes</button>
+        </div>
+    </div>
+</div>

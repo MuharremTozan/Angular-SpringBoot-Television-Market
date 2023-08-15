@@ -1,0 +1,64 @@
+<!-- REGISTER -->
+<div *ngIf="showRegister == true">
+    <div class="login-div-class text-style">
+        <h2>Register Page</h2>
+
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="user.userName" required>
+        </div>
+        <div class="padding">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-warning" (click)="showRegister = false">Back</button>
+            <form (ngSubmit)="onRegisterSubmit()">
+                <button class="btn btn-success register-button" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- LOGIN -->
+<div *ngIf="showRegister == false">
+    <div class="login-div-class text-style">
+        <h2>Login Page</h2>
+
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="user.userName" required>
+        </div>
+        <div class="padding">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-warning" (click)="showRegister = true">Register</button>
+            <form (ngSubmit)="onLoginSubmit()">
+                <button class="btn btn-success login-button" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ERROR Register -->
+<div *ngIf="usernameTaken == true" class="backdrop">
+    <div class="content">
+        <button class="btn btn-danger exit" (click)="exitButton()">X</button>
+        <h2 class="usernameTakenText">Username Already Taken!</h2>
+        <p class="usernameTakenText">{{errorMessage}}</p>
+    </div>
+</div>
+
+<!-- ERROR Login -->
+<div *ngIf="userNotExist == true" class="backdrop">
+    <div class="content">
+        <button class="btn btn-danger exit" (click)="exitButton()">X</button>
+        <h2 class="usernameTakenText">Username or Password Wrong!</h2>
+    </div>
+</div>
